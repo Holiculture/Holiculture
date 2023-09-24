@@ -19,6 +19,8 @@ struct SearchView: View {
     @Binding var searchOption: String
     @Binding var ticketId: Int
     
+    @State var pageNum: Int = 1
+    
     @EnvironmentObject var user: uuidVM
     
     @State var concert = TicketDataModel(
@@ -45,14 +47,14 @@ struct SearchView: View {
     var body: some View {
         ZStack{
             VStack{
-                SearchOption(selectionTitle: $selectionTitle, places: $places, searchOption: $searchOption, distance: $distance, ticketId: $ticketId, isLoading: $isLoading)
+                SearchOption(selectionTitle: $selectionTitle, places: $places, searchOption: $searchOption, distance: $distance, ticketId: $ticketId, isLoading: $isLoading, pageNum: $pageNum)
                     .padding(.leading, 27)
                     .padding(.trailing, 27)
                     .padding(.bottom, 3)
                     .padding(.top, 60)
 
                 
-                selectDistance(ticketId: $ticketId, places: $places, searchOption: $searchOption, distance: $distance, isLoading: $isLoading)
+                selectDistance(ticketId: $ticketId, places: $places, searchOption: $searchOption, distance: $distance, isLoading: $isLoading, pageNum: $pageNum)
 
 
                 Spacer()
@@ -64,24 +66,34 @@ struct SearchView: View {
                             .padding(.top, 270)
                     }
                     else{
-                        if (tickets.isEmpty || places.isEmpty){
-                            Text("🔎")
-                                .font(.system(size: 90))
-                                .padding(.top, 180)
-                                .padding(.bottom, 3)
-                            Text("검색 결과를 찾을 수 없습니다!")
-                                .font(.system(size: 18))
-                                .fontWeight(.bold)
-                                .foregroundColor(Color("HolicGray"))
-                            
-                        }else{
-                            ForEach($places, id: \.place_name) { place in
-                                SpaceCell(place: place, concert: concert)
+                        LazyVStack{
+                            if (tickets.isEmpty || places.isEmpty){
+                                Text("🔎")
+                                    .font(.system(size: 90))
+                                    .padding(.top, 180)
+                                    .padding(.bottom, 3)
+                                Text("검색 결과를 찾을 수 없습니다!")
+                                    .font(.system(size: 18))
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color("HolicGray"))
+                                
+                            }else{
+                                ForEach($places, id: \.place_name) { place in
+                                    SpaceCell(place: place, concert: concert)
+                                }
+                                .frame(maxWidth: .infinity)
                             }
-                            .frame(maxWidth: .infinity)
                         }
                     }
                 } //ScrollView
+                .refreshable {
+                    pageNum += 1
+                    self.isLoading = true
+                    await Task.sleep(2_000_000_000)
+                    SearchManager.shared.getPlace(uuid: user.uuid, ticketId: ticketId, places: $places, option: searchOption, distance: distance, pageNum: pageNum){ success in
+                        self.isLoading = false
+                    }
+                }
                 
             }//VStack
             HStack{
@@ -90,7 +102,7 @@ struct SearchView: View {
                         items: tickets.enumerated().map { index, ticket in
                             DropdownItem(id: index + 1, title: ticket.concert, ticketId: ticket._id, onSelect: {})
                         }, selectionTitle: $selectionTitle, places: $places, searchOption: searchOption, distance: distance, isLoading: $isLoading, ticketId: $ticketId
-                    )
+                        , pageNum: $pageNum)
                     .frame(width: geometry.size.width)
                 }
             }//HStack
@@ -100,8 +112,9 @@ struct SearchView: View {
         }//ZStack
         .padding(.top, 14)
         .onAppear{
+            pageNum = 1
             self.isLoading = true
-            SearchManager.shared.getPlace(uuid: user.uuid, ticketId: ticketId, places: $places, option: searchOption, distance: distance){ success in
+            SearchManager.shared.getPlace(uuid: user.uuid, ticketId: ticketId, places: $places, option: searchOption, distance: distance, pageNum: pageNum){ success in
                 self.isLoading = false
             }
             

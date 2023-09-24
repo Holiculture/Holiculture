@@ -21,6 +21,7 @@ struct CustomDropdownMenu: View {
     
     @Binding var isLoading: Bool
     @Binding var ticketId: Int
+    @Binding var pageNum: Int
 
     var body: some View {
         GeometryReader { _ in
@@ -86,7 +87,7 @@ struct CustomDropdownMenu: View {
     
     private func dropDownItemsList() -> some View {
         ForEach(items) { item in
-            DropdownMenuItemView(isSelecting: $isSelecting, selectionId: $selectedRowId, selectiontitle: $selectionTitle, ticketId: $ticketId, searchOption: searchOption, distance: distance, item: item, places: $places, isLoading: $isLoading)
+            DropdownMenuItemView(isSelecting: $isSelecting, selectionId: $selectedRowId, selectiontitle: $selectionTitle, ticketId: $ticketId, searchOption: searchOption, distance: distance, item: item, places: $places, isLoading: $isLoading, pageNum: $pageNum)
         }
     }
 }
@@ -112,6 +113,7 @@ struct DropdownMenuItemView: View {
     @Binding var places: [PlaceDataModel]
 
     @Binding var isLoading: Bool
+    @Binding var pageNum: Int
     
     var body: some View {
         Button(action: {
@@ -124,8 +126,8 @@ struct DropdownMenuItemView: View {
             item.onSelect()
             
             isLoading = true
-            
-            SearchManager.shared.getPlace(uuid: user.uuid, ticketId: item.ticketId, places: $places, option: searchOption, distance: distance) { success in
+            pageNum = 1
+            SearchManager.shared.getPlace(uuid: user.uuid, ticketId: item.ticketId, places: $places, option: searchOption, distance: distance, pageNum: pageNum) { success in
                 isLoading = false
             }
             

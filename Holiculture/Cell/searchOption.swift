@@ -21,6 +21,8 @@ struct SearchOption: View {
     
     @Binding var isLoading: Bool
     
+    @Binding var pageNum: Int
+    
     
     var body: some View {
         HStack{
@@ -32,7 +34,8 @@ struct SearchOption: View {
                 playActive = false
                 
                 searchOption = "food"
-                SearchManager.shared.getPlace(uuid: user.uuid, ticketId: ticketId, places: $places, option: searchOption, distance: distance)
+                pageNum = 1
+                SearchManager.shared.getPlace(uuid: user.uuid, ticketId: ticketId, places: $places, option: searchOption, distance: distance, pageNum: pageNum)
                 { success in
                     isLoading = false
                 }
@@ -60,7 +63,8 @@ struct SearchOption: View {
                 playActive = false
                 
                 searchOption = "room"
-                SearchManager.shared.getPlace(uuid: user.uuid, ticketId: ticketId, places: $places, option: searchOption, distance: distance)
+                pageNum = 1
+                SearchManager.shared.getPlace(uuid: user.uuid, ticketId: ticketId, places: $places, option: searchOption, distance: distance, pageNum: pageNum)
                 { success in
                     isLoading = false
                 }
@@ -89,7 +93,8 @@ struct SearchOption: View {
                 playActive = true
                 
                 searchOption = "play"
-                SearchManager.shared.getPlace(uuid: user.uuid, ticketId: ticketId, places: $places, option: searchOption, distance: distance)
+                pageNum = 1
+                SearchManager.shared.getPlace(uuid: user.uuid, ticketId: ticketId, places: $places, option: searchOption, distance: distance, pageNum: pageNum)
                 { success in
                     isLoading = false
                 }

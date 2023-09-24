@@ -21,6 +21,7 @@ struct selectDistance: View {
     @Binding var searchOption: String
     @Binding var distance: String
     @Binding var isLoading: Bool
+    @Binding var pageNum: Int
     
     var body: some View {
         VStack {
@@ -30,7 +31,8 @@ struct selectDistance: View {
                         Button(action: { self.selectedIndex = index
                             distance = distanceList[index]
                             isLoading = true
-                            SearchManager.shared.getPlace(uuid: user.uuid, ticketId: ticketId, places: $places, option: searchOption, distance: distance){ success in
+                            pageNum = 1
+                            SearchManager.shared.getPlace(uuid: user.uuid, ticketId: ticketId, places: $places, option: searchOption, distance: distance, pageNum: pageNum){ success in
                                 isLoading = false
                             }
                         }) {

@@ -15,10 +15,10 @@ struct SearchManager {
     let HolicultureURL = Bundle.main.object(forInfoDictionaryKey: "Holiculture_API") as? String ?? ""
 
     // MARK: - 식당 정보 불러오기
-    func getPlace(uuid: String, ticketId: Int, places: Binding<[PlaceDataModel]>, option: String, distance: String, completion: @escaping (Bool) -> Void) {
+    func getPlace(uuid: String, ticketId: Int, places: Binding<[PlaceDataModel]>, option: String, distance: String, pageNum: Int, completion: @escaping (Bool) -> Void) {
         print("주변 장소 불러오는 중 ... ")
 
-        let url = "\(HolicultureURL)\(option)?ticketId=\(ticketId)&distance=\(distance)"
+        let url = "\(HolicultureURL)\(option)/\(pageNum)?ticketId=\(ticketId)&distance=\(distance)"
         
         AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default,
                    headers: ["Content-Type":"application/json","uuid": uuid])
@@ -57,10 +57,13 @@ struct SearchManager {
                             }
                         }
                         DispatchQueue.main.async {
-                            places.wrappedValue.removeAll()
+                            if pageNum == 1 {
+                                places.wrappedValue.removeAll()
+                            }
                             places.wrappedValue.append(contentsOf: resultPlace)
                             print("장소 불러오기 완료")
-                            printAllPlaceData(resultPlace)
+                            print("pageNum: \(pageNum)")
+//                            printAllPlaceData(resultPlace)
                             completion(true)
                         }
                     }
