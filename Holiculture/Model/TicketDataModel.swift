@@ -16,6 +16,7 @@ struct TicketDataModel: Codable {
     var seat: String
     var posX: String
     var posY: String
+    var img: String
 }
 
 

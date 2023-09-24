@@ -19,9 +19,22 @@ struct SearchView: View {
     @Binding var searchOption: String
     @Binding var ticketId: Int
     
-    @State var distance: String = "500"
-    
     @EnvironmentObject var user: uuidVM
+    
+    @State var concert = TicketDataModel(
+        uuid: "",
+        _id: -1,
+        concert: "",
+        address: "",
+        date: "",
+        seat: "",
+        posX: "",
+        posY: "",
+        img: ""
+    )
+
+    
+    @State var distance: String = "500"
     
     @State var isLoading = true
     
@@ -47,6 +60,7 @@ struct SearchView: View {
                 ScrollView{
                     if isLoading {
                         ProgressView()
+                            .tint(Color("HolicBlue"))
                             .padding(.top, 270)
                     }
                     else{
@@ -62,7 +76,7 @@ struct SearchView: View {
                             
                         }else{
                             ForEach($places, id: \.place_name) { place in
-                                SpaceCell(place: place)
+                                SpaceCell(place: place, concert: concert)
                             }
                             .frame(maxWidth: .infinity)
                         }
@@ -89,6 +103,12 @@ struct SearchView: View {
             self.isLoading = true
             SearchManager.shared.getPlace(uuid: user.uuid, ticketId: ticketId, places: $places, option: searchOption, distance: distance){ success in
                 self.isLoading = false
+            }
+            
+            if let selectedTicket = tickets.first(where: { $0._id == ticketId }) {
+                self.concert = selectedTicket
+            } else {
+                // 처리할 로직 추가: 일치하는 항목을 찾지 못한 경우
             }
         }
     }

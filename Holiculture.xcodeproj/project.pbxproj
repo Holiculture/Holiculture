@@ -17,7 +17,6 @@
 		394519B12A7A38F900FDB0DF /* listPractice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394519B02A7A38F900FDB0DF /* listPractice.swift */; };
 		394519B42A7A39D200FDB0DF /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 394519B32A7A39D200FDB0DF /* Alamofire */; };
 		394519B62A7A420100FDB0DF /* TicketDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394519B52A7A420100FDB0DF /* TicketDataModel.swift */; };
-		394519BA2A7CEF8800FDB0DF /* SendTicketData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394519B92A7CEF8800FDB0DF /* SendTicketData.swift */; };
 		394519BC2A7D024700FDB0DF /* Ticketmanager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394519BB2A7D024700FDB0DF /* Ticketmanager.swift */; };
 		394519BF2A7D05F100FDB0DF /* TAKUUID in Frameworks */ = {isa = PBXBuildFile; productRef = 394519BE2A7D05F100FDB0DF /* TAKUUID */; };
 		394519C22A7D3DC700FDB0DF /* UserUUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394519C12A7D3DC700FDB0DF /* UserUUID.swift */; };
@@ -25,6 +24,14 @@
 		394519C62A7FA85700FDB0DF /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394519C52A7FA85700FDB0DF /* SearchManager.swift */; };
 		394519C92A7FF39700FDB0DF /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 394519C82A7FF39700FDB0DF /* URLImage */; };
 		394519F42A888A1D00FDB0DF /* dropDown수정.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394519F32A888A1D00FDB0DF /* dropDown수정.swift */; };
+		395D75A32ABB777400A164FE /* EditConcertSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395D75A22ABB777400A164FE /* EditConcertSearchView.swift */; };
+		395D75A52ABB917C00A164FE /* ConcertInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395D75A42ABB917C00A164FE /* ConcertInfo.swift */; };
+		395D75A72ABB952300A164FE /* concertInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395D75A62ABB952300A164FE /* concertInfoCell.swift */; };
+		395D75A92ABB9F8200A164FE /* EditConcertInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395D75A82ABB9F8200A164FE /* EditConcertInfo.swift */; };
+		395D75AF2ABC35B100A164FE /* NowConcertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395D75AE2ABC35B100A164FE /* NowConcertView.swift */; };
+		395D75B12ABC88AA00A164FE /* nowConcertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395D75B02ABC88AA00A164FE /* nowConcertCell.swift */; };
+		395D75B32ABC8D2E00A164FE /* cateConcertList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395D75B22ABC8D2E00A164FE /* cateConcertList.swift */; };
+		395D75B52ABDF41200A164FE /* ConcertInfo2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395D75B42ABDF41200A164FE /* ConcertInfo2.swift */; };
 		396F72A52A752A3300144D14 /* emptyTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396F72A42A752A3300144D14 /* emptyTicket.swift */; };
 		396F72A72A763CA900144D14 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396F72A62A763CA900144D14 /* EditView.swift */; };
 		3974CC642A66E14100233F27 /* MakeTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3974CC632A66E14100233F27 /* MakeTicketView.swift */; };
@@ -38,12 +45,21 @@
 		39A923A72A9C2B3100471652 /* selectDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A923A62A9C2B3100471652 /* selectDistance.swift */; };
 		39A923A92A9C623800471652 /* distanceSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A923A82A9C623800471652 /* distanceSelect.swift */; };
 		39A923AB2A9CEFF700471652 /* concertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A923AA2A9CEFF700471652 /* concertCell.swift */; };
+		39A9D0842AA448E0008F9527 /* DateInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A9D0832AA448E0008F9527 /* DateInputView.swift */; };
 		39B05DF82A8E5A5B006D89EC /* LikeDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B05DF72A8E5A5B006D89EC /* LikeDataModel.swift */; };
 		39B05DFA2A8E5ABF006D89EC /* LikeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B05DF92A8E5ABF006D89EC /* LikeManager.swift */; };
 		39B05E112A935D93006D89EC /* likeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B05E102A935D93006D89EC /* likeCell.swift */; };
+		39C42DE62ABA0724009AB02E /* ConcertDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C42DE52ABA0724009AB02E /* ConcertDataModel.swift */; };
+		39C42DE82ABA079F009AB02E /* ConcertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C42DE72ABA079F009AB02E /* ConcertManager.swift */; };
+		39C42DEA2ABAED47009AB02E /* testNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C42DE92ABAED47009AB02E /* testNavigation.swift */; };
+		39FF38B42AAEE8F8007C786B /* ConcertSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FF38B32AAEE8F8007C786B /* ConcertSearchView.swift */; };
+		39FF38B62AAFF3E8007C786B /* emptyConcert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FF38B52AAFF3E8007C786B /* emptyConcert.swift */; };
+		39FF38F82AB55BC7007C786B /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FF38F72AB55BC7007C786B /* WebView.swift */; };
+		39FF38FA2AB6321B007C786B /* AppLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FF38F92AB6321B007C786B /* AppLogo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		39137B8F2ABE0383004DCEDE /* Holiculture_API.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Holiculture_API.xcconfig; sourceTree = "<group>"; };
 		394258232A61B5AD0070D956 /* Holiculture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Holiculture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		394258262A61B5AD0070D956 /* HolicultureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolicultureApp.swift; sourceTree = "<group>"; };
 		394258282A61B5AD0070D956 /* TicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketView.swift; sourceTree = "<group>"; };
@@ -54,13 +70,20 @@
 		394519AE2A77B68400FDB0DF /* ID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ID.swift; sourceTree = "<group>"; };
 		394519B02A7A38F900FDB0DF /* listPractice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listPractice.swift; sourceTree = "<group>"; };
 		394519B52A7A420100FDB0DF /* TicketDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketDataModel.swift; sourceTree = "<group>"; };
-		394519B92A7CEF8800FDB0DF /* SendTicketData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendTicketData.swift; sourceTree = "<group>"; };
 		394519BB2A7D024700FDB0DF /* Ticketmanager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Ticketmanager.swift; path = ../Ticketmanager.swift; sourceTree = "<group>"; };
 		394519C02A7D3CF000FDB0DF /* Holiculture.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Holiculture.entitlements; sourceTree = "<group>"; };
 		394519C12A7D3DC700FDB0DF /* UserUUID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUUID.swift; sourceTree = "<group>"; };
 		394519C32A7FA72D00FDB0DF /* PlaceDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDataModel.swift; sourceTree = "<group>"; };
 		394519C52A7FA85700FDB0DF /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
 		394519F32A888A1D00FDB0DF /* dropDown수정.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "dropDown수정.swift"; sourceTree = "<group>"; };
+		395D75A22ABB777400A164FE /* EditConcertSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditConcertSearchView.swift; sourceTree = "<group>"; };
+		395D75A42ABB917C00A164FE /* ConcertInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcertInfo.swift; sourceTree = "<group>"; };
+		395D75A62ABB952300A164FE /* concertInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = concertInfoCell.swift; sourceTree = "<group>"; };
+		395D75A82ABB9F8200A164FE /* EditConcertInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditConcertInfo.swift; sourceTree = "<group>"; };
+		395D75AE2ABC35B100A164FE /* NowConcertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowConcertView.swift; sourceTree = "<group>"; };
+		395D75B02ABC88AA00A164FE /* nowConcertCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nowConcertCell.swift; sourceTree = "<group>"; };
+		395D75B22ABC8D2E00A164FE /* cateConcertList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cateConcertList.swift; sourceTree = "<group>"; };
+		395D75B42ABDF41200A164FE /* ConcertInfo2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcertInfo2.swift; sourceTree = "<group>"; };
 		396F72A42A752A3300144D14 /* emptyTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = emptyTicket.swift; sourceTree = "<group>"; };
 		396F72A62A763CA900144D14 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		3974CC632A66E14100233F27 /* MakeTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeTicketView.swift; sourceTree = "<group>"; };
@@ -74,9 +97,18 @@
 		39A923A62A9C2B3100471652 /* selectDistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selectDistance.swift; sourceTree = "<group>"; };
 		39A923A82A9C623800471652 /* distanceSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = distanceSelect.swift; sourceTree = "<group>"; };
 		39A923AA2A9CEFF700471652 /* concertCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = concertCell.swift; sourceTree = "<group>"; };
+		39A9D0822AA43F47008F9527 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		39A9D0832AA448E0008F9527 /* DateInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateInputView.swift; sourceTree = "<group>"; };
 		39B05DF72A8E5A5B006D89EC /* LikeDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeDataModel.swift; sourceTree = "<group>"; };
 		39B05DF92A8E5ABF006D89EC /* LikeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeManager.swift; sourceTree = "<group>"; };
 		39B05E102A935D93006D89EC /* likeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = likeCell.swift; sourceTree = "<group>"; };
+		39C42DE52ABA0724009AB02E /* ConcertDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcertDataModel.swift; sourceTree = "<group>"; };
+		39C42DE72ABA079F009AB02E /* ConcertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcertManager.swift; sourceTree = "<group>"; };
+		39C42DE92ABAED47009AB02E /* testNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testNavigation.swift; sourceTree = "<group>"; };
+		39FF38B32AAEE8F8007C786B /* ConcertSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcertSearchView.swift; sourceTree = "<group>"; };
+		39FF38B52AAFF3E8007C786B /* emptyConcert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = emptyConcert.swift; sourceTree = "<group>"; };
+		39FF38F72AB55BC7007C786B /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		39FF38F92AB6321B007C786B /* AppLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +128,7 @@
 		3942581A2A61B5AD0070D956 = {
 			isa = PBXGroup;
 			children = (
+				39137B8F2ABE0383004DCEDE /* Holiculture_API.xcconfig */,
 				394258252A61B5AD0070D956 /* Holiculture */,
 				394258242A61B5AD0070D956 /* Products */,
 			);
@@ -112,6 +145,7 @@
 		394258252A61B5AD0070D956 /* Holiculture */ = {
 			isa = PBXGroup;
 			children = (
+				39A9D0822AA43F47008F9527 /* Info.plist */,
 				394519C02A7D3CF000FDB0DF /* Holiculture.entitlements */,
 				396F729F2A7506D300144D14 /* Model */,
 				3974CC6E2A6A670B00233F27 /* Cell */,
@@ -134,15 +168,39 @@
 		3942583A2A61B91A0070D956 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				394258282A61B5AD0070D956 /* TicketView.swift */,
+				395D75AA2ABC30FC00A164FE /* Ticket */,
 				3942583D2A61BCC30070D956 /* SearchView.swift */,
 				394258412A61BCDC0070D956 /* WishView.swift */,
 				3974CC632A66E14100233F27 /* MakeTicketView.swift */,
 				3974CC8C2A7137FA00233F27 /* TabView.swift */,
 				396F72A62A763CA900144D14 /* EditView.swift */,
 				394519B02A7A38F900FDB0DF /* listPractice.swift */,
+				39A9D0832AA448E0008F9527 /* DateInputView.swift */,
+				39FF38B32AAEE8F8007C786B /* ConcertSearchView.swift */,
+				39FF38F72AB55BC7007C786B /* WebView.swift */,
+				395D75A22ABB777400A164FE /* EditConcertSearchView.swift */,
+				395D75A42ABB917C00A164FE /* ConcertInfo.swift */,
+				395D75A82ABB9F8200A164FE /* EditConcertInfo.swift */,
+				395D75AE2ABC35B100A164FE /* NowConcertView.swift */,
+				395D75B42ABDF41200A164FE /* ConcertInfo2.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		395D75AA2ABC30FC00A164FE /* Ticket */ = {
+			isa = PBXGroup;
+			children = (
+				395D75AB2ABC310D00A164FE /* Cell */,
+				394258282A61B5AD0070D956 /* TicketView.swift */,
+			);
+			path = Ticket;
+			sourceTree = "<group>";
+		};
+		395D75AB2ABC310D00A164FE /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		396F729F2A7506D300144D14 /* Model */ = {
@@ -150,13 +208,14 @@
 			children = (
 				394519AE2A77B68400FDB0DF /* ID.swift */,
 				394519B52A7A420100FDB0DF /* TicketDataModel.swift */,
-				394519B92A7CEF8800FDB0DF /* SendTicketData.swift */,
 				394519BB2A7D024700FDB0DF /* Ticketmanager.swift */,
 				394519C12A7D3DC700FDB0DF /* UserUUID.swift */,
 				394519C32A7FA72D00FDB0DF /* PlaceDataModel.swift */,
 				394519C52A7FA85700FDB0DF /* SearchManager.swift */,
 				39B05DF72A8E5A5B006D89EC /* LikeDataModel.swift */,
 				39B05DF92A8E5ABF006D89EC /* LikeManager.swift */,
+				39C42DE52ABA0724009AB02E /* ConcertDataModel.swift */,
+				39C42DE72ABA079F009AB02E /* ConcertManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -176,6 +235,12 @@
 				39A923A62A9C2B3100471652 /* selectDistance.swift */,
 				39A923A82A9C623800471652 /* distanceSelect.swift */,
 				39A923AA2A9CEFF700471652 /* concertCell.swift */,
+				39FF38B52AAFF3E8007C786B /* emptyConcert.swift */,
+				39FF38F92AB6321B007C786B /* AppLogo.swift */,
+				39C42DE92ABAED47009AB02E /* testNavigation.swift */,
+				395D75A62ABB952300A164FE /* concertInfoCell.swift */,
+				395D75B02ABC88AA00A164FE /* nowConcertCell.swift */,
+				395D75B22ABC8D2E00A164FE /* cateConcertList.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -262,28 +327,43 @@
 			files = (
 				394258422A61BCDC0070D956 /* WishView.swift in Sources */,
 				3974CC702A6A671700233F27 /* grayLine.swift in Sources */,
+				395D75A52ABB917C00A164FE /* ConcertInfo.swift in Sources */,
 				394519AF2A77B68400FDB0DF /* ID.swift in Sources */,
+				395D75B32ABC8D2E00A164FE /* cateConcertList.swift in Sources */,
 				39A923A72A9C2B3100471652 /* selectDistance.swift in Sources */,
+				39C42DE62ABA0724009AB02E /* ConcertDataModel.swift in Sources */,
 				39A923AB2A9CEFF700471652 /* concertCell.swift in Sources */,
 				3974CC8D2A7137FA00233F27 /* TabView.swift in Sources */,
+				395D75B12ABC88AA00A164FE /* nowConcertCell.swift in Sources */,
 				3974CC8B2A7131C900233F27 /* plusButton.swift in Sources */,
 				394519BC2A7D024700FDB0DF /* Ticketmanager.swift in Sources */,
 				394519C42A7FA72D00FDB0DF /* PlaceDataModel.swift in Sources */,
 				394519C62A7FA85700FDB0DF /* SearchManager.swift in Sources */,
+				39FF38B62AAFF3E8007C786B /* emptyConcert.swift in Sources */,
 				39B05E112A935D93006D89EC /* likeCell.swift in Sources */,
 				39B05DFA2A8E5ABF006D89EC /* LikeManager.swift in Sources */,
 				3974CC642A66E14100233F27 /* MakeTicketView.swift in Sources */,
+				395D75A92ABB9F8200A164FE /* EditConcertInfo.swift in Sources */,
 				3974CC762A6A96D500233F27 /* searchOption.swift in Sources */,
+				39A9D0842AA448E0008F9527 /* DateInputView.swift in Sources */,
 				3974CC742A6A95F900233F27 /* spaceCell.swift in Sources */,
+				39FF38B42AAEE8F8007C786B /* ConcertSearchView.swift in Sources */,
+				395D75AF2ABC35B100A164FE /* NowConcertView.swift in Sources */,
+				395D75A32ABB777400A164FE /* EditConcertSearchView.swift in Sources */,
 				394519F42A888A1D00FDB0DF /* dropDown수정.swift in Sources */,
+				395D75A72ABB952300A164FE /* concertInfoCell.swift in Sources */,
+				39C42DE82ABA079F009AB02E /* ConcertManager.swift in Sources */,
 				394258292A61B5AD0070D956 /* TicketView.swift in Sources */,
-				394519BA2A7CEF8800FDB0DF /* SendTicketData.swift in Sources */,
+				395D75B52ABDF41200A164FE /* ConcertInfo2.swift in Sources */,
+				39FF38F82AB55BC7007C786B /* WebView.swift in Sources */,
+				39C42DEA2ABAED47009AB02E /* testNavigation.swift in Sources */,
 				3974CC782A6C213D00233F27 /* ticketCell.swift in Sources */,
 				3942583E2A61BCC30070D956 /* SearchView.swift in Sources */,
 				396F72A52A752A3300144D14 /* emptyTicket.swift in Sources */,
 				394519B12A7A38F900FDB0DF /* listPractice.swift in Sources */,
 				396F72A72A763CA900144D14 /* EditView.swift in Sources */,
 				3974CC722A6A92A700233F27 /* dropDown.swift in Sources */,
+				39FF38FA2AB6321B007C786B /* AppLogo.swift in Sources */,
 				394258272A61B5AD0070D956 /* HolicultureApp.swift in Sources */,
 				394519B62A7A420100FDB0DF /* TicketDataModel.swift in Sources */,
 				39B05DF82A8E5A5B006D89EC /* LikeDataModel.swift in Sources */,
@@ -411,59 +491,81 @@
 		};
 		394258322A61B5AE0070D956 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 39137B8F2ABE0383004DCEDE /* Holiculture_API.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Holiculture/Holiculture.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Holiculture/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 47HVCF82JP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Holiculture/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mje0211.Holiculture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Holiculture;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		394258332A61B5AE0070D956 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 39137B8F2ABE0383004DCEDE /* Holiculture_API.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Holiculture/Holiculture.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Holiculture/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 47HVCF82JP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Holiculture/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mje0211.Holiculture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Holiculture;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

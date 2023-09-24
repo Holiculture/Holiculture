@@ -32,28 +32,14 @@ struct concertCell: View {
                 .background(Color(red: 0.83, green: 0.83, blue: 0.83).opacity(0.4))
             
             HStack{
-                // MARK: - 좋아요 버튼
-
-                Rectangle()
-                    .foregroundColor(.clear)
-                    .frame(width: 10, height: 10)
-                    .background(
-                        Image(systemName: "pin.fill")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 10, height: 10)
-                            .foregroundColor(.black)
-                    )
-
-                
                 HStack{
-                    Text("\(concert.concert)_\(concert.address)")
+                    Text("\(concert.concert)")
                         .font(.system(size: 14))
                         .fontWeight(.semibold)
 
                     Spacer()
                 }
-                .frame(width: 155, height: 15)
+                .frame(width: 200, height: 15)
                 .minimumScaleFactor(0.3)
                 
                 HStack{
@@ -61,7 +47,7 @@ struct concertCell: View {
                     Button(action: {
                         print("출발 클릭")
 
-                        start = "\(concert.address)"
+                        start = "\(concert.concert)"
                         startLike = LikeDataModel(uuid: concert.uuid,
                                                   _id: concert._id,
                                                   place_name: concert.concert,
@@ -69,7 +55,7 @@ struct concertCell: View {
                                                   category_name: "",
                                                   distance: "",
                                                   road_address_name: concert.address,
-                                                  cate: "",
+//                                                  cate: "",
                                                   img: "",
                                                   isLike: false,
                                                   x: concert.posX,
@@ -77,24 +63,24 @@ struct concertCell: View {
                         
                         print("\(startLike.place_name)")
                     }) {
-                        Text("🚶출발")
-                            .font(.system(size: 8.5))
+                        Text("출발")
+                            .font(.system(size: 10))
                             .fontWeight(.semibold)
                             .foregroundColor(Color("HolicGray"))
                     }
-                    .frame(width: 55, height: 30)
+                    .frame(width: 55, height: 35)
                     .background(Color(.white))
                     .overlay(
-                        RoundedRectangle(cornerRadius: 7)
+                        RoundedRectangle(cornerRadius: 10)
                             .stroke(Color("HolicGray"), lineWidth: 2)
                     )
-                    .cornerRadius(7)
+                    .cornerRadius(10)
                     
                     
                     Button(action: {
                         print("도착 클릭")
 
-                        finish = "\(concert.address)"
+                        finish = "\(concert.concert)"
                         finishLike = LikeDataModel(uuid: concert.uuid,
                                                    _id: concert._id,
                                                    place_name: concert.concert,
@@ -102,25 +88,25 @@ struct concertCell: View {
                                                    category_name: "",
                                                    distance: "",
                                                    road_address_name: concert.address,
-                                                   cate: "",
+//                                                   cate: "",
                                                    img: "",
                                                    isLike: false,
                                                    x: concert.posX,
                                                    y: concert.posY)
                         print("\(finishLike.place_name)")
                     }) {
-                        Text("🏁도착")
-                            .font(.system(size: 8.5))
+                        Text("도착")
+                            .font(.system(size: 10))
                             .fontWeight(.semibold)
                             .foregroundColor(Color("HolicGray"))
                     }
-                    .frame(width: 55, height: 30)
+                    .frame(width: 55, height: 35)
                     .background(Color(.white))
                     .overlay(
-                        RoundedRectangle(cornerRadius: 7)
+                        RoundedRectangle(cornerRadius: 10)
                             .stroke(Color("HolicGray"), lineWidth: 2)
                     )
-                    .cornerRadius(7)
+                    .cornerRadius(10)
                     
                 }
                 
@@ -130,10 +116,3 @@ struct concertCell: View {
         }
     }
 }
-
-
-//struct concertCell_Previews: PreviewProvider {
-//    static var previews: some View {
-//        concertCell()
-//    }
-//}

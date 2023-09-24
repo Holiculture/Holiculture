@@ -17,9 +17,13 @@ struct TicketManager {
     
     static let shared = TicketManager()
     
+    let HolicultureURL = Bundle.main.object(forInfoDictionaryKey: "Holiculture_API") as? String ?? ""
+    
     // MARK: - 티켓 정보 전달
-    func sendTicket(uuid: String, concert: String, address: String, date: String, seat: String) {
-        let url = "https://holiculture.du.r.appspot.com/ticket/add"
+    func sendTicket(uuid: String, concert: String, address: String, date: String, seat: String, img: String) {
+        
+        let url = "\(HolicultureURL)ticket/add"
+        
         
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
@@ -34,6 +38,7 @@ struct TicketManager {
             "address": address,
             "date": date,
             "seat": seat,
+            "img": img
         ]
         
         // httpBody에 parameters 추가
@@ -61,7 +66,7 @@ struct TicketManager {
     
     func getTicket(uuid: String, tickets: Binding<[TicketDataModel]>, completion: @escaping (Bool) -> Void) {
         print("티켓 불러오는 중 ... ")
-        let url = "https://holiculture.du.r.appspot.com/ticket/get"
+        let url = "\(HolicultureURL)ticket/get"
         
         AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default,
                    headers: ["Content-Type":"application/json","uuid": uuid])
@@ -80,7 +85,8 @@ struct TicketManager {
                                let date = ticketInfo["date"] as? String,
                                let seat = ticketInfo["seat"] as? String,
                                let posX = ticketInfo["posX"] as? String,
-                               let posY = ticketInfo["posY"] as? String{
+                               let posY = ticketInfo["posY"] as? String,
+                               let img = ticketInfo["img"] as? String{
                                 let newTicket = TicketDataModel(
                                     uuid: uuid,
                                     _id: _id,
@@ -89,7 +95,8 @@ struct TicketManager {
                                     date: date,
                                     seat: seat,
                                     posX: posX,
-                                    posY: posY
+                                    posY: posY,
+                                    img: img
                                 )
                                 newTickets.append(newTicket)
                             }
@@ -121,7 +128,7 @@ struct TicketManager {
     
     func deleteTicket(ticketId: Int, completion: @escaping (Bool) -> Void) {
         print("티켓 삭제 중 ... ")
-        let url = "https://holiculture.du.r.appspot.com/ticket/delete/\(ticketId)"
+        let url = "\(HolicultureURL)ticket/delete/\(ticketId)"
         
         AF.request(url, method: .delete, encoding: JSONEncoding.default,
                    headers: ["Content-Type":"application/json"])
@@ -139,8 +146,8 @@ struct TicketManager {
     }
     
     //postman에서 아직 작동이 되지않으므로 나중에 다시 해보기
-    func editTicket(uuid: String, _id: Int, concert: String, address: String, date: String, seat: String, completion: @escaping (Bool) -> Void) {
-        let url = "https://holiculture.du.r.appspot.com/ticket/edit/\(_id)"
+    func editTicket(uuid: String, _id: Int, concert: String, address: String, date: String, seat: String, img: String, completion: @escaping (Bool) -> Void) {
+        let url = "\(HolicultureURL)ticket/edit/\(_id)"
         
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "PUT"
@@ -154,6 +161,7 @@ struct TicketManager {
             "address": address,
             "date": date,
             "seat": seat,
+            "img": img
         ]
         
         // httpBody에 parameters 추가

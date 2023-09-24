@@ -12,27 +12,30 @@ struct plusButton: View {
     @Binding var tickets: [TicketDataModel]
 
     var body: some View {
-        Button(action: {
-            isActive = true
-        }) {
-            Text("+")
-                .font(.system(size: 30))
-                .fontWeight(.regular)
-                .foregroundColor(.white)
+        NavigationStack{
+            NavigationLink(destination: DateInputView(tickets: $tickets), isActive: $isActive){
+                Button(action: {
+                    isActive = true
+                    
+                }) {
+                    Text("+")
+                        .font(.system(size: 30))
+                        .fontWeight(.regular)
+                        .foregroundColor(.white)
+                }
+                .padding()
+                .frame(width: 60, height: 60)
+                .background(Color("HolicBlue"))
+                .clipShape(Circle())
+                .shadow(color: Color.gray, radius: 3, x: 3, y: 3)
+//                            .fullScreenCover(isPresented: $isActive, content: {
+//                                DateInputView(tickets: $tickets)
+//                            })
+            }
         }
-        .padding()
-        .frame(width: 60, height: 60)
-        .background(Color("HolicGray"))
-        .clipShape(Circle())
-        .shadow(color: Color.gray, radius: 3, x: 3, y: 3)
-
-        .overlay(
-            RoundedRectangle(cornerRadius: 50)
-                .stroke(Color("HolicGray"), lineWidth: 1))
-
-        .fullScreenCover(isPresented: $isActive, content: {
-            MakeTicketView(tickets: $tickets)
-        })
+        
+            
+            
     }
 }
 

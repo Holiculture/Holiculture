@@ -12,13 +12,13 @@ struct SearchManager {
     
     static let shared = SearchManager()
     
+    let HolicultureURL = Bundle.main.object(forInfoDictionaryKey: "Holiculture_API") as? String ?? ""
+
     // MARK: - 식당 정보 불러오기
     func getPlace(uuid: String, ticketId: Int, places: Binding<[PlaceDataModel]>, option: String, distance: String, completion: @escaping (Bool) -> Void) {
         print("주변 장소 불러오는 중 ... ")
-        
-        //let encodedConcert = concert.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        
-        let url = "https://holiculture.du.r.appspot.com/\(option)?ticketId=\(ticketId)&distance=\(distance)"
+
+        let url = "\(HolicultureURL)\(option)?ticketId=\(ticketId)&distance=\(distance)"
         
         AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default,
                    headers: ["Content-Type":"application/json","uuid": uuid])
@@ -36,7 +36,7 @@ struct SearchManager {
                                let category_name = placeInfo["category_name"] as? String,
                                let distance = placeInfo["distance"] as? String,
                                let road_address_name = placeInfo["road_address_name"] as? String,
-                               let cate = placeInfo["cate"] as? String,
+//                               let cate = placeInfo["cate"] as? String,
                                let img = placeInfo["img"] as? String,
                                let isLike = placeInfo["isLike"] as? Bool,
                                let x = placeInfo["x"] as? String,
@@ -47,7 +47,7 @@ struct SearchManager {
                                     category_name: category_name,
                                     distance: distance,
                                     road_address_name: road_address_name,
-                                    cate: cate,
+//                                    cate: cate,
                                     img: img,
                                     isLike: isLike,
                                     x: x,
@@ -84,7 +84,7 @@ func printAllPlaceData(_ places: [PlaceDataModel]) {
         print("Category Name: \(place.category_name)")
         print("Distance: \(place.distance)")
         print("Road Address Name: \(place.road_address_name)")
-        print("Category: \(place.cate)")
+//        print("Category: \(place.cate)")
         print("Images: \(place.img)")
         print("isLike: \(place.isLike)")
         print("x: \(place.x)")

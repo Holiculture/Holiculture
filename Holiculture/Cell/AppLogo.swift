@@ -7,14 +7,31 @@
 
 import SwiftUI
 
-struct AppLogo: View {
+struct appLogo: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack{
+            Rectangle()
+                .foregroundColor(.clear)
+                .frame(width: 150, height: 20)
+                .background(
+                    Image("HolicultureLogo")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 150, height: 20)
+                        .clipped()
+                )
+                .padding(.leading, 18)
+            Spacer()
+        }
+        .frame(maxWidth: .infinity)
+        .background(.white)
+        .padding(.top, 15)
     }
+        
 }
 
-struct AppLogo_Previews: PreviewProvider {
+struct appLogo_Previews: PreviewProvider {
     static var previews: some View {
-        AppLogo()
+        appLogo()
     }
 }

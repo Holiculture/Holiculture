@@ -43,12 +43,12 @@ struct SearchOption: View {
                     .foregroundColor(foodActive ? .white : Color("HolicGray"))
             }
             .padding()
-            .frame(width: 100, height: 35)
-            .background(foodActive ? Color("HolicGray") : .white)
+            .frame(width: 100, height: 37)
+            .background(foodActive ? Color("HolicBlue") : .white)
             .cornerRadius(10)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color("HolicGray"), lineWidth: foodActive ? 0 : 1)
+                    .stroke(Color(red: 0.83, green: 0.83, blue: 0.83), lineWidth: foodActive ? 0 : 1)
             )
             Spacer()
             
@@ -72,12 +72,12 @@ struct SearchOption: View {
             }
             
             .padding()
-            .frame(width: 100, height: 35)
-            .background(roomActive ? Color("HolicGray") : .white)
+            .frame(width: 100, height: 37)
+            .background(roomActive ? Color("HolicBlue") : .white)
             .cornerRadius(10)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color("HolicGray"), lineWidth: roomActive ? 0 : 1)
+                    .stroke(Color(red: 0.83, green: 0.83, blue: 0.83), lineWidth: roomActive ? 0 : 1)
             )
             Spacer()
             
@@ -100,12 +100,12 @@ struct SearchOption: View {
                     .foregroundColor(playActive ? .white : Color("HolicGray"))
             }
             .padding()
-            .frame(width: 100, height: 35)
-            .background(playActive ? Color("HolicGray") : .white)
+            .frame(width: 100, height: 37)
+            .background(playActive ? Color("HolicBlue") : .white)
             .cornerRadius(10)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color("HolicGray"), lineWidth: playActive ? 0 : 1)
+                    .stroke(Color(red: 0.83, green: 0.83, blue: 0.83), lineWidth: playActive ? 0 : 1)
             )
         }
         .onAppear{

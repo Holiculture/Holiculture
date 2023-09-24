@@ -12,9 +12,11 @@ struct LikeManager {
     
     static let shared = LikeManager()
     
+    let HolicultureURL = Bundle.main.object(forInfoDictionaryKey: "Holiculture_API") as? String ?? ""
+    
     func sendLike(uuid: String, placeData: PlaceDataModel) {
         print("좋아요 등록 중 ... ")
-        let url = "https://holiculture.du.r.appspot.com/like/add"
+        let url = "\(HolicultureURL)like/add"
         
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
@@ -30,7 +32,7 @@ struct LikeManager {
             "category_name": placeData.category_name,
             "distance": placeData.distance,
             "road_address_name": placeData.road_address_name,
-            "cate": placeData.cate,
+//            "cate": placeData.cate,
             "img": placeData.img,
             "x" : placeData.x,
             "y" : placeData.y
@@ -62,7 +64,7 @@ struct LikeManager {
     
     func sendIsLike(uuid: String, placeData: LikeDataModel) {
         print("좋아요 등록 중 ... ")
-        let url = "https://holiculture.du.r.appspot.com/like/add"
+        let url = "\(HolicultureURL)like/add"
         
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
@@ -78,7 +80,7 @@ struct LikeManager {
             "category_name": placeData.category_name,
             "distance": placeData.distance,
             "road_address_name": placeData.road_address_name,
-            "cate": placeData.cate,
+//            "cate": placeData.cate,
             "img": placeData.img,
             "isLike": placeData.isLike,
             "x": placeData.x,
@@ -112,7 +114,7 @@ struct LikeManager {
         print("좋아요 삭제 중 ... ")
         
         if let encodedAddress = address.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) {
-            let url = "https://holiculture.du.r.appspot.com/like/delete/\(encodedAddress)"
+            let url = "\(HolicultureURL)like/delete/\(encodedAddress)"
             
             AF.request(url, method: .delete, encoding: JSONEncoding.default,
                        headers: ["Content-Type": "application/json", "uuid": uuid])
@@ -132,7 +134,7 @@ struct LikeManager {
     
     func getLike(uuid: String, likes: Binding<[LikeDataModel]>, completion: @escaping (Bool) -> Void){
         print("좋아요 불러오는 중 ... ")
-        let url = "https://holiculture.du.r.appspot.com/like/get"
+        let url = "\(HolicultureURL)like/get"
         
         AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default,
                    headers: ["Content-Type":"application/json","uuid": uuid])
@@ -152,7 +154,7 @@ struct LikeManager {
                                let category_name = likeInfo["category_name"] as? String,
                                let distance = likeInfo["distance"] as? String,
                                let road_address_name = likeInfo["road_address_name"] as? String,
-                               let cate = likeInfo["cate"] as? String,
+//                               let cate = likeInfo["cate"] as? String,
                                let img = likeInfo["img"] as? String,
                                let isLike = likeInfo["isLike"] as? Bool,
                                let x = likeInfo["x"] as? String,
@@ -165,7 +167,7 @@ struct LikeManager {
                                     category_name: category_name,
                                     distance: distance,
                                     road_address_name: road_address_name,
-                                    cate: cate,
+//                                    cate: cate,
                                     img: img,
                                     isLike: isLike,
                                     x: x,
@@ -206,7 +208,7 @@ struct LikeManager {
             print("Category Name: \(place.category_name)")
             print("Distance: \(place.distance)")
             print("Road Address Name: \(place.road_address_name)")
-            print("Category: \(place.cate)")
+//            print("Category: \(place.cate)")
             print("Images: \(place.img)")
             print("x: \(place.x)")
             print("y: \(place.y)")

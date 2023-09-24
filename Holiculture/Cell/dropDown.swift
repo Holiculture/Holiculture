@@ -29,6 +29,8 @@ struct CustomDropdownMenu: View {
                     Text(selectionTitle)
                         .font(.system(size: 16, weight: .semibold, design: .rounded))
                         .animation(.none)
+                        .lineLimit(1) // 텍스트가 너무 길 경우 한 줄로 표시
+                        .minimumScaleFactor(0.5)
                     Spacer()
                     Image(systemName: (isSelecting ? "chevron.up" : "chevron.down"))
                         .font(.system(size: 16, weight: .semibold))
@@ -54,18 +56,18 @@ struct CustomDropdownMenu: View {
             .cornerRadius(10)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color("HolicGray"), lineWidth: 1)
+                    .stroke(Color(red: 0.83, green: 0.83, blue: 0.83), lineWidth: 1)
             )
             .onTapGesture {
                 if(items.count >= 1){
                     isSelecting.toggle()
                 }
             }
-            .onAppear {
-                selectedRowId = items[0].id
-                selectionTitle = items[0].title
-                ticketId = items[0].ticketId
-            }
+//            .onAppear {
+//                selectedRowId = items[0].id
+//                selectionTitle = items[0].title
+//                ticketId = items[0].ticketId
+//            }
             .onAppear {
                 if items.isEmpty {
                     selectedRowId = -1
@@ -73,6 +75,7 @@ struct CustomDropdownMenu: View {
                 } else {
                     selectedRowId = items[0].id
                     selectionTitle = items[0].title
+                    ticketId = items[0].ticketId
                 }
             }
 
@@ -136,6 +139,8 @@ struct DropdownMenuItemView: View {
                     .opacity(selectionId == item.id ? 1 : 0)
                 Text(item.title)
                     .font(.system(size: 16, weight: .regular, design: .rounded))
+                    .lineLimit(1) // 텍스트가 너무 길 경우 한 줄로 표시
+                    .minimumScaleFactor(0.7)
 
                 Spacer()
             }

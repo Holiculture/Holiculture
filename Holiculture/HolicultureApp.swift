@@ -16,6 +16,7 @@ struct HolicultureApp: App {
             ContentView()
                 .environmentObject(idVM())
                 .environmentObject(uuidVM())
+
         }
     }
 }

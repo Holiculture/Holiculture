@@ -25,6 +25,7 @@ struct TicketView: View {
                 ZStack {
                     if isLoading {
                         ProgressView()
+                            .tint(Color("HolicBlue"))
                     } else {
                         if tickets.isEmpty {
                             EmptyTicket()
@@ -37,8 +38,15 @@ struct TicketView: View {
                             } // ScrollView
                             .padding(.top, 15)
                         }
-                        plusButton(tickets: $tickets)
-                            .padding(EdgeInsets(top: 575, leading: 310, bottom: 30, trailing: 30))
+                        VStack{
+                            Spacer()
+                            HStack{
+                                Spacer()
+                                plusButton(tickets: $tickets)
+                            }
+                            .padding(.trailing, 20)
+                        }
+                        .padding(.bottom, 20)
                     }
                     
                 } // ZStack

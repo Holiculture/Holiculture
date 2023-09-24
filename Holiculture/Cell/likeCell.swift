@@ -59,7 +59,7 @@ struct likeCell: View {
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: 12, height: 12)
-                                .foregroundColor(.black)
+                                .foregroundColor(Color("HolicBlue"))
                         )
                 }
                 
@@ -88,18 +88,18 @@ struct likeCell: View {
                         startLike = like
                         print("\(startLike.place_name)")
                     }) {
-                        Text("🚶출발")
-                            .font(.system(size: 8.5))
+                        Text("출발")
+                            .font(.system(size: 10))
                             .fontWeight(.semibold)
                             .foregroundColor(isStart ? Color(.white) : Color("HolicGray"))
                     }
-                    .frame(width: 55, height: 30)
+                    .frame(width: 55, height: 35)
                     .background(isStart ? Color("HolicGray") : Color(.white))
                     .overlay(
-                        RoundedRectangle(cornerRadius: 7)
+                        RoundedRectangle(cornerRadius: 10)
                             .stroke(Color("HolicGray"), lineWidth: 2)
                     )
-                    .cornerRadius(7)
+                    .cornerRadius(10)
                     
                     
                     Button(action: {
@@ -109,18 +109,18 @@ struct likeCell: View {
                         finishLike = like
                         print("\(finishLike.place_name)")
                     }) {
-                        Text("🏁도착")
-                            .font(.system(size: 8.5))
+                        Text("도착")
+                            .font(.system(size: 10))
                             .fontWeight(.semibold)
                             .foregroundColor(isFinish ? Color(.white) : Color("HolicGray"))
                     }
-                    .frame(width: 55, height: 30)
+                    .frame(width: 55, height: 35)
                     .background(isFinish ? Color("HolicGray") : Color(.white))
                     .overlay(
-                        RoundedRectangle(cornerRadius: 7)
+                        RoundedRectangle(cornerRadius: 10)
                             .stroke(Color("HolicGray"), lineWidth: 2)
                     )
-                    .cornerRadius(7)
+                    .cornerRadius(10)
                     
                 }
                 
@@ -131,17 +131,30 @@ struct likeCell: View {
     }
 }
 
-
+//
 //struct LikeCell_Previews: PreviewProvider {
 //    static var previews: some View {
-//        likeCell(like: LikeDataModel(uuid: "0DF1E963-22AD-4A6C-88A0-2CC25A71CB19", _id: 39,
+//        likeCell(like: .constant(LikeDataModel(uuid: "0DF1E963-22AD-4A6C-88A0-2CC25A71CB19", _id: 39,
 //                                     place_name: "https:/ADFADFADFADFADFADSFADFADFADDAFADF",
 //                                     place_url: "삼겹살",
 //                                     category_name: "httadp",
 //                                     distance: "286",
 //                                     road_address_name: "서울 광진구 능동로19길 36",
-//                                     cate: "식당",
 //                                     img: "깍뚝",
-//                  isLike: true), isStart: false, isFinish: false)
+//                                               isLike: true, x: "", y: "")), isStart: false, isFinish: false, isStartOn: .constant(false), isFinishOn: .constant(false), start: .constant(""), finish: .constant(""), likes: .constant([]), isLoading: .constant(false), startLike: .constant(LikeDataModel(uuid: "0DF1E963-22AD-4A6C-88A0-2CC25A71CB19", _id: 39,
+//                                                                                                                                                                                                                                                                                                            place_name: "https:/ADFADFADFADFADFADSFADFADFADDAFADF",
+//                                                                                                                                                                                                                                                                                                            place_url: "삼겹살",
+//                                                                                                                                                                                                                                                                                                            category_name: "httadp",
+//                                                                                                                                                                                                                                                                                                            distance: "286",
+//                                                                                                                                                                                                                                                                                                            road_address_name: "서울 광진구 능동로19길 36",
+//                                                                                                                                                                                                                                                                                                            img: "깍뚝",
+//                                                                                                                                                                                                                                                                                                                      isLike: true, x: "", y: "")), finishLike: .constant(LikeDataModel(uuid: "0DF1E963-22AD-4A6C-88A0-2CC25A71CB19", _id: 39,
+//                                                                                                                                                                                                                                                                                                                                                                                        place_name: "https:/ADFADFADFADFADFADSFADFADFADDAFADF",
+//                                                                                                                                                                                                                                                                                                                                                                                        place_url: "삼겹살",
+//                                                                                                                                                                                                                                                                                                                                                                                        category_name: "httadp",
+//                                                                                                                                                                                                                                                                                                                                                                                        distance: "286",
+//                                                                                                                                                                                                                                                                                                                                                                                        road_address_name: "서울 광진구 능동로19길 36",
+//                                                                                                                                                                                                                                                                                                                                                                                        img: "깍뚝",
+//                                                                                                                                                                                                                                                                                                                                                                                                  isLike: true, x: "", y: "")))
 //    }
 //}

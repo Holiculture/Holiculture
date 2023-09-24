@@ -12,13 +12,15 @@ struct MakeTicketView: View {
     @State private var showingAlert: Bool = false
     @State private var errorAlert: Bool = false
     @State private var presentingNewView: Bool = false
+    @State private var activeWebView: Bool = false
     
-    @State var concert: String = ""
-    @State var date: String = ""
+    @State var concert: String
+    @Binding var date: String
     @State private var schedule = Date()
     
-    @State var address: String = ""
+    @State var address: String
     @State var seat: String = ""
+    @State var img: String
     
     @EnvironmentObject var user: uuidVM
     
@@ -30,10 +32,13 @@ struct MakeTicketView: View {
     
     @State private var isDatePickerVisible = false
     
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+
     var body: some View {
-        VStack{
+        NavigationStack{
             if isLoading {
                 ProgressView()
+                    .tint(Color("HolicBlue"))
             }
             else{
                 ZStack {
@@ -52,11 +57,14 @@ struct MakeTicketView: View {
                             .foregroundColor(Color("HolicGray"))
                             .padding(EdgeInsets(top: 0, leading: 276, bottom: 0, trailing: 30))
                         
+
                         TextField("*공연명", text: $concert)
                             .font(.system(size: 16))
                             .padding()
                             .background(Color(uiColor: .white))
                             .frame(width: 340, height: 56)
+                            .lineLimit(1) // 텍스트가 너무 길 경우 한 줄로 표시
+                            .minimumScaleFactor(0.6)
                             .cornerRadius(15)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 15)
@@ -66,9 +74,24 @@ struct MakeTicketView: View {
                             .foregroundColor(Color("HolicGray"))
                             .padding(EdgeInsets(top: 5, leading: 27, bottom: 0, trailing: 23))
                         
-                        TextField("*장소", text: $address)
-                            .font(.system(size: 16))
-                            .padding()
+//                        NavigationLink(destination: WebView(request: URLRequest(url: URL(string: "https://minchelin42.github.io/Kakao-PostAPI/")!), onDismiss: { receiveAddress in
+//                            address = receiveAddress // 주소 데이터를 저장
+//                        }), isActive: $activeWebView){
+//
+                            Button(action: {
+                                activeWebView = true
+                            }) {
+                                HStack{
+                                    Text(address.isEmpty ? "*장소" : "\(address)")
+                                        .font(.system(size: 16))
+                                    //나중에 .gray -> 색상 바꿔야 함
+                                        .foregroundColor(address.isEmpty ? Color(red: 0.80, green: 0.80, blue: 0.80) : Color("HolicGray"))
+                                        .lineLimit(1) // 텍스트가 너무 길 경우 한 줄로 표시
+                                        .minimumScaleFactor(0.6)
+                                        .padding(.leading, 15)
+                                    Spacer()
+                                }
+                            }
                             .background(Color(uiColor: .white))
                             .frame(width: 340, height: 56)
                             .cornerRadius(15)
@@ -77,26 +100,39 @@ struct MakeTicketView: View {
                                     .inset(by: 0.5)
                                     .stroke(Color("HolicGray"), lineWidth: 1)
                             )
-                            .foregroundColor(Color("HolicGray"))
                             .padding(EdgeInsets(top: 14, leading: 27, bottom: 0, trailing: 23))
-                        
-                        Text(date.isEmpty ? "*일시" : "\(date)")
-                            .font(.system(size: 16))
-                            .padding()
-                            .background(Color(uiColor: .white))
-                            .frame(width: 340, height: 56, alignment: .leading)
-                            .cornerRadius(15)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 15)
-                                    .inset(by: 0.5)
-                                    .stroke(Color("HolicGray"), lineWidth: 1)
-                            )
-                            .foregroundColor(date.isEmpty ? Color(red: 0.77, green: 0.77, blue: 0.77) : Color("HolicGray"))
-                            .padding(EdgeInsets(top: 14, leading: 27, bottom: 0, trailing: 23))
-                            .onTapGesture {
-                                isDatePickerVisible.toggle()
+                            .sheet(isPresented: $activeWebView) {
+                                WebView(request: URLRequest(url: URL(string: "https://minchelin42.github.io/Kakao-PostAPI/")!), onDismiss: { receiveAddress in
+                                    address = receiveAddress // 주소 데이터를 저장
+                                    activeWebView = false
+                                })
                             }
-                       
+                            
+//                        }
+                        
+                        Button(action: {
+                            isDatePickerVisible = true
+                        }) {
+                            HStack{
+                                Text(date.isEmpty ? "*일시" : "\(date)")
+                                    .font(.system(size: 16))
+                                //나중에 .gray -> 색상 바꿔야 함
+                                    .foregroundColor(date.isEmpty ? Color(red: 0.80, green: 0.80, blue: 0.80) : Color("HolicGray"))
+                                    .padding(.leading, 15)
+                                Spacer()
+                            }
+                        }
+                        .background(Color(uiColor: .white))
+                        .frame(width: 340, height: 56)
+                        .cornerRadius(15)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 15)
+                                .inset(by: 0.5)
+                                .stroke(Color("HolicGray"), lineWidth: 1)
+                        )
+                        .padding(EdgeInsets(top: 14, leading: 27, bottom: 0, trailing: 23))
+                        
+                        
                         TextField("좌석", text: $seat)
                             .font(.system(size: 16))
                             .padding()
@@ -114,8 +150,8 @@ struct MakeTicketView: View {
                         HStack{
                             Button(action: {
                                 print("티켓 추가 버튼 클릭")
-                                self.isLoading = true
                                 addTicket()
+//                                self.isLoading = true
                             }) {
                                 Text("티켓 추가")
                                     .font(.system(size: 13))
@@ -124,7 +160,7 @@ struct MakeTicketView: View {
                             }
                             .padding()
                             .frame(width: 120, height: 50)
-                            .background(Color("HolicGray"))
+                            .background(Color("HolicBlue"))
                             .cornerRadius(15)
                             .alert(isPresented: $showingAlert) {
                                 if errorAlert {
@@ -171,8 +207,10 @@ struct MakeTicketView: View {
                                         ContentView(tickets: tickets)
                                     }))
                         } //HStack
-                        .padding(EdgeInsets(top: 48, leading: 71, bottom: 0, trailing: 71))
-                    
+                        //                        .padding(EdgeInsets(top: 48, leading: 71, bottom: 0, trailing: 71))
+                        .padding(EdgeInsets(top: 14, leading: 71, bottom: 0, trailing: 71))
+                        
+                        
                     }//VStack
                     
                     if isDatePickerVisible {
@@ -215,7 +253,21 @@ struct MakeTicketView: View {
                     
                 }//ZStack
             }//else
-        } //VStack
+        }//navigationStack
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }) {
+                    Image(systemName: "chevron.left")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 10)
+                        .foregroundColor(Color("HolicBlue"))
+                }
+            }
+        }
     }
     
     private func addTicket() {
@@ -230,12 +282,12 @@ struct MakeTicketView: View {
             seat = "정보없음"
         }
         
-        let newTicket = TicketDataModel(uuid: user.uuid, _id: -1, concert: concert, address: address, date: date, seat: seat, posX: "", posY: "")
+        let newTicket = TicketDataModel(uuid: user.uuid, _id: -1, concert: concert, address: address, date: date, seat: seat, posX: "", posY: "", img: img)
         addedTickets.append(newTicket)
         
         //newTicket.sendTicketDataToServer(ticket: newTicket)
         
-        TicketManager.shared.sendTicket(uuid: user.uuid, concert: newTicket.concert, address: newTicket.address, date: newTicket.date, seat: newTicket.seat)
+        TicketManager.shared.sendTicket(uuid: user.uuid, concert: newTicket.concert, address: newTicket.address, date: newTicket.date, seat: newTicket.seat, img: newTicket.img)
         
         tickets.append(newTicket)
         
@@ -251,6 +303,7 @@ struct MakeTicketView: View {
         
         print("티켓 추가 완료!")
         showingAlert = true
+        errorAlert = false
         
         TicketManager.shared.getTicket(uuid: user.uuid, tickets: $tickets){ success in
             self.isLoading = false
@@ -262,8 +315,8 @@ struct MakeTicketView: View {
 }
 
 
-struct MakeTicketView_Previews: PreviewProvider {
-    static var previews: some View {
-        MakeTicketView(tickets: .constant([]))
-    }
-}
+//struct MakeTicketView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MakeTicketView(concert: "", date: .constant(""), tickets: .constant([]))
+//    }
+//}

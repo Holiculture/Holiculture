@@ -55,6 +55,10 @@ struct selectDistance: View {
             }
             .animation(.default)
         }
+        .onAppear{
+            distance = "500"
+            self.selectedIndex = 0
+        }
     }
     
     func setFrame(index: Int, frame: CGRect) {

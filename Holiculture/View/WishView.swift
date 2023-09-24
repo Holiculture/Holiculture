@@ -14,6 +14,7 @@ struct WishView: View {
     @State var finish: String = ""
     @State var isActive: Bool = false
     @State var urlString: String = ""
+    @State var isError: Bool = false
     
     @Binding var tickets: [TicketDataModel]
     @Binding var likes: [LikeDataModel]
@@ -45,7 +46,7 @@ struct WishView: View {
                         .cornerRadius(10)
                         .overlay(
                             RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color("HolicGray"), lineWidth: 1)
+                                .stroke(Color(red: 0.83, green: 0.83, blue: 0.83), lineWidth: 1)
                         )
                         .foregroundColor(.white)
                     
@@ -60,6 +61,8 @@ struct WishView: View {
                             .font(.system(size: 12))
                             .padding()
                             .frame(width: 280, height: 34)
+                            .lineLimit(1) // 텍스트가 너무 길 경우 한 줄로 표시
+                            .minimumScaleFactor(0.5)
                             .cornerRadius(10)
                             .foregroundColor(Color("HolicGray"))
                         
@@ -68,6 +71,8 @@ struct WishView: View {
                             .font(.system(size: 12))
                             .padding()
                             .frame(width: 280, height: 34)
+                            .lineLimit(1) // 텍스트가 너무 길 경우 한 줄로 표시
+                            .minimumScaleFactor(0.5)
                             .cornerRadius(10)
                             .foregroundColor(Color("HolicGray"))
                     }
@@ -88,11 +93,11 @@ struct WishView: View {
                             
                         }
                         .frame(width: 27, height: 35)
-                        .background(Color("HolicGray"))
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color("HolicGray"), lineWidth: 2)
-                        )
+                        .background(Color("HolicBlue"))
+                        //                        .overlay(
+                        //                            RoundedRectangle(cornerRadius: 10)
+                        //                                .stroke(Color("HolicGray"), lineWidth: 2)
+                        //                        )
                         .cornerRadius(10)
                         
                         Button(action: {
@@ -108,11 +113,11 @@ struct WishView: View {
                             
                         }
                         .frame(width: 27, height: 35)
-                        .background(Color("HolicGray"))
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color("HolicGray"), lineWidth: 2)
-                        )
+                        .background(Color("HolicBlue"))
+                        //                        .overlay(
+                        //                            RoundedRectangle(cornerRadius: 10)
+                        //                                .stroke(Color("HolicGray"), lineWidth: 2)
+                        //                        )
                         .cornerRadius(10)
                     }
                     
@@ -120,16 +125,44 @@ struct WishView: View {
                     Button(action: {
                         print("길찾기 클릭")
                         if isActive {
-                            let startNameEncoded = startLike.place_name.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-                            let finishNameEncoded = finishLike.place_name.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-                            
-                            let urlString = "http://m.map.naver.com/route.nhn?menu=route&sname=\(startNameEncoded)&sx=\(startLike.x)&sy=\(startLike.y)&ename=\(finishNameEncoded)&ex=\(finishLike.x)&ey=\(finishLike.y)&pathType=0&showMap=true"
+                            let urlString = "kakaomap://route?sp=\(startLike.y),\(startLike.x)&ep=\(finishLike.y),\(finishLike.x)&by=FOOT"
                             
                             print(urlString)
                             
                             if let url = URL(string: urlString) {
-                                UIApplication.shared.open(url)
+                                if UIApplication.shared.canOpenURL(url) {
+                                    UIApplication.shared.open(url) { success in
+                                        if success {
+                                            // URL을 성공적으로 여는 경우
+                                        } else {
+                                            // URL을 여는 중에 오류 발생
+                                            let appleMapURL = "http://maps.apple.com/?saddr=\(startLike.road_address_name)&daddr=\(finishLike.road_address_name)&dirflg=w"
+                                            let encodedURL = appleMapURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                                            
+                                            if let url = URL(string: encodedURL) {
+                                                UIApplication.shared.open(url)
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    // 해당 URL을 열 수 없는 경우
+                                    let appleMapURL = "http://maps.apple.com/?saddr=\(startLike.road_address_name)&daddr=\(finishLike.road_address_name)&dirflg=w"
+                                    let encodedURL = appleMapURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                                    
+                                    if let url = URL(string: encodedURL) {
+                                        UIApplication.shared.open(url)
+                                    }
+                                }
+                            } else {
+                                // 올바르지 않은 URL
+                                let appleMapURL = "http://maps.apple.com/?saddr=\(startLike.road_address_name)&daddr=\(finishLike.road_address_name)&dirflg=w"
+                                let encodedURL = appleMapURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                                
+                                if let url = URL(string: encodedURL) {
+                                    UIApplication.shared.open(url)
+                                }
                             }
+ 
                         }
                     }) {
                         Text("길찾기")
@@ -140,12 +173,26 @@ struct WishView: View {
                         
                     }
                     .frame(width: 55, height: 35)
-                    .background(isActive ? Color("HolicGray") : Color(.white))
+                    .background(isActive ? Color("HolicBlue") : Color(.white))
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color("HolicGray"), lineWidth: 2)
+                            .stroke(Color(red: 0.83, green: 0.83, blue: 0.83), lineWidth: isActive ? 0 : 2)
                     )
                     .cornerRadius(10)
+                    //                    .alert(isPresented: $isError) {
+                    //                        Alert(
+                    //                            title: Text("실행 오류"),
+                    //                            message: Text("카카오맵을 다운로드 해주세요!"),
+                    //                            primaryButton: .default(Text("다운로드 하기"), action: {
+                    //                                isError = false
+                    //
+                    //                                if let appStoreURL = URL(string: "https://apps.apple.com/kr/app/apple-store/id304608425") {
+                    //                                 UIApplication.shared.open(appStoreURL)
+                    //                                }
+                    //                            }),
+                    //                            secondaryButton: .destructive(Text("취소"))
+                    //                        )
+                    //                    }
                 }
             }
             .onReceive(Just(start)) { newValue in
@@ -161,16 +208,17 @@ struct WishView: View {
             ScrollView{
                 if isLoading{
                     ProgressView()
+                        .tint(Color("HolicBlue"))
                         .padding(.top,300)
                 }
                 else{
-                    if(likes.isEmpty){
-                        Text("💔")
+                    if(tickets.isEmpty){
+                        Text("🎫")
                             .font(.system(size: 90))
                             .padding(.top, 180)
                             .padding(.bottom, 3)
                         
-                        Text("좋아요 내역이 없습니다!")
+                        Text("티켓 등록을 먼저 해주세요!")
                             .font(.system(size: 18))
                             .fontWeight(.bold)
                             .foregroundColor(Color("HolicGray"))
@@ -205,6 +253,7 @@ struct WishView: View {
     }
     
 }
+
 
 
 

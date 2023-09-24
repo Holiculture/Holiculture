@@ -13,7 +13,7 @@ struct PlaceDataModel: Codable {
     var category_name: String
     var distance: String
     var road_address_name: String
-    var cate: String
+//    var cate: String
     var img: String
     var isLike: Bool
     var x: String
